@@ -1,24 +1,34 @@
 import React from "react";
 
+import Icon from "../../BUILTIN_COMPONENTs/icon/icon";
+
 const ControlPanel = () => {
   return (
     <div
       className="control-panel"
       style={{
         position: "absolute",
-        bottom: "calc(0% + 48px)",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
+        top: "-10px",
+        left: "-10px",
 
-        width: "48px",
-        height: "48px",
-
-        backgroundColor: "rgb(0, 0, 0)",
-        borderRadius: "24px",
-        dropShadow: "0 0 10px rgba(0, 0, 0, 0.72)",
-        backdropFilter: "blur(10px)",
+        width: "calc(100% + 20px)",
+        height: "calc(100% + 20px)",
+        backgroundColor: "rgba(255, 255, 255, 0.16)",
+        WebkitAppRegion: "drag",
       }}
-    ></div>
+    >
+      <Icon
+        src="eye"
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: 20,
+          userSelect: "none",
+        }}
+      />
+    </div>
   );
 };
 

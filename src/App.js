@@ -1,20 +1,17 @@
 import "./App.css";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
 import ControlPanel from "./COMPONENTs/control_panel/control_panel";
 
 const App = () => {
   return (
-    <div
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-
-        width: "100%",
-        height: "100%",        
-      }}
-    >
-      <ControlPanel />
+    <div>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<div/>
+          <Route path="/control" element={<ControlPanel />} />
+        </Routes>
+      </HashRouter>
     </div>
   );
 };

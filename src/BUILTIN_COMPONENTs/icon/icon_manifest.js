@@ -1,5 +1,3 @@
-import { github } from "react-code-blocks";
-
 export const iconManifest = {
   /* { System UI Icons } ------------------------------------------------------------------------------------------------------------- */
   arrow: () => import("./SVGs/UI/arrow.svg"),
@@ -91,6 +89,8 @@ export const iconManifest = {
   star_1_: () => import("./SVGs/UI/star_1_.svg"),
   star_0: () => import("./SVGs/UI/star_0.svg"),
   star_0_: () => import("./SVGs/UI/star_0_.svg"),
+  eye: () => import("./SVGs/UI/eye.svg"),
+  eye_: () => import("./SVGs/UI/eye_.svg"),
 
   /* {win32} */
   win32_maximize: () => import("./SVGs/UI/win32/maximize.svg"),

@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef, useContext, use } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { iconManifest } from "./icon_manifest";
 
-import { ConfigContexts } from "../../CONTAINERs/config/contexts";
-
 const Icon = ({ src, ...props }) => {
-  const { theme } = useContext(ConfigContexts);
+  const theme = "dark_theme";
 
   const [iconSrc, setIconSrc] = useState(null);
   const [isIconLoaded, setIsIconLoaded] = useState(false);
@@ -40,13 +38,7 @@ const Icon = ({ src, ...props }) => {
 
   if (!isIconLoaded) return null;
   return (
-    <img
-      ref={iconRef}
-      src={iconSrc}
-      alt={src}
-      draggable={false}
-      {...props}
-    />
+    <img ref={iconRef} src={iconSrc} alt={src} draggable={false} {...props} />
   );
 };
 
