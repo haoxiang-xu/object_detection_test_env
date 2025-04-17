@@ -1,9 +1,21 @@
 const { app, BrowserWindow, screen } = require("electron");
 const path = require("path");
+const axios = require("axios");
 
 let overlayWindow = null;
 
-function createOverlay() {
+const createOverlay = () => {
+  const checkServerAndLoadURL = (url) => {
+    axios
+      .get(url)
+      .then(() => {
+        overlayWindow.loadURL(url);
+      })
+      .catch((error) => {
+        console.error("Server not ready, retrying...", error);
+        setTimeout(() => checkServerAndLoadURL(url), 2000);
+      });
+  };
   const primaryDisplay = screen.getPrimaryDisplay();
   const { width, height } = primaryDisplay.bounds;
   overlayWindow = new BrowserWindow({
@@ -25,14 +37,13 @@ function createOverlay() {
   });
 
   overlayWindow.setIgnoreMouseEvents(true, { forward: true });
-  overlayWindow.loadFile(path.join(__dirname, "index.html"));
+  checkServerAndLoadURL("http://localhost:3000");
   overlayWindow.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
 
   overlayWindow.on("closed", () => {
     overlayWindow = null;
   });
-}
-
+};
 app.on("window-all-closed", (e) => {
   e.preventDefault();
 });
